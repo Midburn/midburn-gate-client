@@ -1,0 +1,10 @@
+{
+  "name": "Midburn Gate",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.1"
+  },
+  "dependencies": {
+    "angular-local-storage": "~0.1.5"
+  }
+}
