@@ -1,2 +1,2 @@
-D:\Users\Roy\SkyDrive\Documents\Midburn\MidburnGate\Client\platforms\android\ant-build\AndroidManifest.xml : \
-D:\Users\Roy\SkyDrive\Documents\Midburn\MidburnGate\Client\platforms\android\AndroidManifest.xml \
+/Users/roey/midburn-code/midburn-gate-client/platforms/android/ant-build/AndroidManifest.xml : \
+/Users/roey/midburn-code/midburn-gate-client/platforms/android/AndroidManifest.xml \
