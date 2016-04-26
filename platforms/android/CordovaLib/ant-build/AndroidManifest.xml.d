@@ -1,2 +1,2 @@
-D:\Users\Roy\SkyDrive\Documents\Midburn\MidburnGate\Client\platforms\android\CordovaLib\ant-build\AndroidManifest.xml : \
-D:\Users\Roy\SkyDrive\Documents\Midburn\MidburnGate\Client\platforms\android\CordovaLib\AndroidManifest.xml \
+/Users/roey/midburn-code/midburn-gate-client/platforms/android/CordovaLib/ant-build/AndroidManifest.xml : \
+/Users/roey/midburn-code/midburn-gate-client/platforms/android/CordovaLib/AndroidManifest.xml \
