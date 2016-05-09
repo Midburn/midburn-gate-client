@@ -1,0 +1,37 @@
+<ion-view>
+    <ion-content dir="rtl">
+        <h1 dir="ltr">Midburn Gate</h1>
+
+        <hr>
+        <form>
+            <h3> מספר הזמנה</h3>
+            <input type="number" id="order_num" name="order_num"/>
+
+            <h3> מספר כרטיס</h3>
+            <input type="number" id="ticket_num" name="ticket_num">
+            <p>&nbsp;</p>
+            <button ng-click="manualInput()">כניסה</button>
+        </form>
+
+        <hr>
+
+        <h2>כניסה בסריקה</h2>
+        <button ng-click="scanBarcode()">סריקת ברקוד</button>
+
+        <hr>
+
+        <h2 ng-if="data.color != 'red'">
+            נכנסו במשמרת:
+        <span ng-bind="data.entrance_counter"></span>
+        </h2>
+        <h2 style="color: red" ng-if="data.color == 'red'" ng-bind-html="data.message"></h2>
+
+        <p>&nbsp;</p>
+        <a ng-click="login()">פתיחת / סגירת עמדה</a>
+        <p>IP: <span ng-bind="data.ip"></span></p>
+        <p>Server: <span ng-bind="server"></span></p>
+        <p>&nbsp;</p>
+
+        <img class="center-image" ng-hide="!buttonDisabled" ng-src="img/connecting.gif">
+    </ion-content>
+</ion-view>

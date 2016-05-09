@@ -578,9 +578,6 @@
         }
     },
     "installed_plugins": {
-        "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.gate725641"
-        },
         "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.ionicframework.gate725641"
         },
@@ -594,6 +591,9 @@
             "PACKAGE_NAME": "com.ionicframework.gate725641"
         },
         "com.jiliac.systemvolume": {
+            "PACKAGE_NAME": "com.ionicframework.gate725641"
+        },
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.gate725641"
         }
     },

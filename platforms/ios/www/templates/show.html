@@ -1,0 +1,28 @@
+<ion-view>
+    <ion-content dir="rtl">
+        <h1 style="background-color: red" ng-if="data.color=='red'" ng-bind-html="data.message"></h1>
+        <h1 style="background-color: green" ng-if="data.color=='green'" ng-bind-html="data.message"></h1>
+        <h2>מספר הזמנה: <span ng-bind="data.order_number"></span></h2>
+        <h2>מספר כרטיס: <span ng-bind="data.ticket_number"></span></h2>
+        <h2>שם: <span ng-bind-html="data.name"></span></h2>
+        <h2>סוג כרטיס: <span ng-bind-html="data.ticket_type"></span></h2>
+        <h2 ng-if="data.entrance_date != ''">תאריך כניסה: <span ng-bind="data.entrance_date"></span></h2>
+		<img ng-if="data.disabled_parking != false" src="img/dis.png" height="100" width="100"></img>
+        <hr>
+        <p>&nbsp;</p><p>&nbsp;</p>
+		<table>
+		<tr> 
+		<td ng-if="data.color=='green'" style="padding: 30px">
+        <button style="background-color: lightgreen;" ng-if="data.color=='green'" ng-click="enter()">כניסה</button>
+		</td>
+		<td ng-if="data.color=='green'" style="padding: 30px">
+        <button style="background-color: lightpink" ng-if="data.color=='green'" ng-click="cancel()">לא נכנס</button>
+		</td>
+		<td ng-if="data.color=='red'">
+        <button style="background-color: lightpink" ng-if="data.color=='red'" ng-click="cancel()">חזרה</button>
+		</td>
+		</tr>
+		</table>
+		
+    </ion-content>
+</ion-view>

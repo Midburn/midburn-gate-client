@@ -1,0 +1,43 @@
+/* Empty. Add your own CSS if you like */
+button {
+    font-size: 28px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+input {
+    font-size: 28px !important;
+}
+
+input[type="number"], [type="text"], [type="password"] {
+    background-color: lightgrey;
+}
+
+input[type="number"]:focus, [type="text"]:focus {
+    background-color: lightgreen;
+}
+
+.center-image {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    margin: auto;
+}
+
+ion-content {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-top: 15px !important;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: darkgreen;
+}
+
+.hide_pass {
+    -webkit-text-security: disc;
+}

@@ -1,0 +1,34 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        }
+    },
+    "dependent_plugins": {
+        "com.jiliac.systemvolume": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        },
+        "com.phonegap.plugins.barcodescanner": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        },
+        "org.apache.cordova.file": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        },
+        "org.apache.cordova.media": {
+            "PACKAGE_NAME": "com.midburn.gate"
+        }
+    }
+}
