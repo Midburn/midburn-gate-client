@@ -6,7 +6,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         $scope.scanBarcode = function () {
             $cordovaBarcodeScanner.scan().then(function (imageData) {
                 if (!imageData.cancelled) {
-                    $http.get(PreferencesService.getURL() + '/?id=' + imageData.text, {timeout: 3000})
+                    $http.get(PreferencesService.getURL() + '/?id=' + imageData.text, {timeout: 10000})
                         .success(function (data, status, headers, config) {
                             TicketService.set(data);
                             if (data.color == "red") {
@@ -32,7 +32,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
         $scope.manualInput = function () {
             $ionicLoading.show();
-            $http.get(PreferencesService.getURL() + '/?action=manual_entrance&order=' + $('#order_num').val() + '&ticket=' + $('#ticket_num').val(), {timeout: 3000})
+            $http.get(PreferencesService.getURL() + '/?action=manual_entrance&order=' + $('#order_num').val() + '&ticket=' + $('#ticket_num').val(), {timeout: 10000})
                 .success(function (data, status, headers, config) {
                     TicketService.set(data);
                     if (data.color == "red") {
@@ -54,7 +54,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         };
 
         $scope.checkServer = function () {
-            $http.get(PreferencesService.getURL() + '/?action=counter', {timeout: 3000})
+            $http.get(PreferencesService.getURL() + '/?action=counter', {timeout: 10000})
                 .success(function (data, status, headers, config) {
                     $scope.data = data;
                     $scope.server = PreferencesService.getURL();
@@ -86,7 +86,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
         $scope.enter = function () {
             $ionicLoading.show();
-            $http.get(PreferencesService.getURL() + '/?action=save&id=' + $scope.data.barcode, {timeout: 3000})
+            $http.get(PreferencesService.getURL() + '/?action=save&id=' + $scope.data.barcode, {timeout: 10000})
                 .success(function (data, status, headers, config) {
                     TicketService.set(data);
                     $scope.data = data;
@@ -125,7 +125,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
                 alert("יש להכניס שם מפעיל עמדה");
             }
             else {
-                $http.get(PreferencesService.getURL() + '/?action=login&gater=' + gater, {timeout: 3000})
+                $http.get(PreferencesService.getURL() + '/?action=login&gater=' + gater, {timeout: 10000})
                     .success(function (data, status, headers, config) {
                         $scope.message = data.message;
                         $scope.color = data.color;
@@ -134,7 +134,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
         };
 
         $scope.logout = function () {
-            $http.get(PreferencesService.getURL() + '/?action=logout', {timeout: 3000})
+            $http.get(PreferencesService.getURL() + '/?action=logout', {timeout: 10000})
                 .success(function (data, status, headers, config) {
                     $scope.message = data.message;
                     $scope.color = data.color;
