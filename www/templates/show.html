@@ -8,10 +8,11 @@
         <h2>סוג כרטיס: <span ng-bind-html="data.ticket_type"></span></h2>
         <h2 ng-if="data.entrance_date != ''">תאריך כניסה: <span ng-bind="data.entrance_date"></span></h2>
 		<img ng-if="data.disabled_parking != false" src="img/dis.png" height="100" width="100"></img>
+    <img ng-if="data.ticket_type.indexOf('Junior') > -1 || data.ticket_type.indexOf('Child') > -1" src="img/baby.png" height="100" width="100"></img>
         <hr>
         <p>&nbsp;</p><p>&nbsp;</p>
 		<table>
-		<tr> 
+		<tr>
 		<td ng-if="data.color=='green'" style="padding: 30px">
         <button style="background-color: lightgreen;" ng-if="data.color=='green'" ng-click="enter()">כניסה</button>
 		</td>
@@ -23,6 +24,6 @@
 		</td>
 		</tr>
 		</table>
-		
+
     </ion-content>
 </ion-view>
