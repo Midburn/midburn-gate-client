@@ -7,8 +7,19 @@
         <h2>שם: <span ng-bind-html="data.name"></span></h2>
         <h2>סוג כרטיס: <span ng-bind-html="data.ticket_type"></span></h2>
         <h2 ng-if="data.entrance_date != ''">תאריך כניסה: <span ng-bind="data.entrance_date"></span></h2>
-		<img ng-if="data.disabled_parking != false" src="img/dis.png" height="100" width="100"></img>
-    <img ng-if="data.ticket_type.indexOf('Junior') > -1 || data.ticket_type.indexOf('Child') > -1" src="img/baby.png" height="100" width="100"></img>
+    <table>
+  		<tr>
+    		<td>
+        <img ng-if="data.disabled_parking == true" src="img/dis.png" height="100" width="100"></img>
+        </td>
+        <td>
+        <img ng-if="data.ticket_type.indexOf('Junior') > -1 || data.ticket_type.indexOf('Child') > -1" src="img/baby.png" height="100" width="100"></img>
+        </td>
+        <td>
+        <img ng-if="data.ticket_type.indexOf('Production') > -1" src="img/uni.png" height="100" width="100"></img>
+        </td>
+      </tr>
+    </table>
         <hr>
         <p>&nbsp;</p><p>&nbsp;</p>
 		<table>
