@@ -1,7 +1,17 @@
+var store;
 
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     .controller("MainController", function ($ionicPlatform, $interval, $scope, $cordovaBarcodeScanner, $http, TicketService, $state, PreferencesService, $ionicLoading) {
+        store = new Persist.Store("starter");
+        var invitationNumber = store.get('invitationNumber');
+        var ticketNumber = store.get('ticketNumber');
+        console.log("invitationNumber: " + invitationNumber);
+        console.log("ticketNumber: " + ticketNumber);
+        if (invitationNumber && ticketNumber) {
+            $state.go('show');
+        }
+
         $ionicLoading.hide();
         $scope.scanBarcode = function () {
             $cordovaBarcodeScanner.scan().then(function (imageData) {
@@ -41,6 +51,10 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
                     else {
                         playAudio("okAudio");
                     }
+                    //saving user's credentials
+                    console.log("saving ticket and invitation numbers");
+                    store.set('invitationNumber', $('#order_num').val());
+                    store.set('ticketNumber', $('#ticket_num').val());
                     $ionicLoading.hide();
                     $state.go('show');
                 })
