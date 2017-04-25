@@ -1,39 +1,13 @@
 <ion-view>
     <ion-content dir="rtl">
+        <h1 dir="ltr">Midburn Login</h1>
 
-        <div ng-hide="passPhase">
-            <form>
-                <p>&nbsp;</p>
-                <h2>מפעיל עמדה: </h2>
-                <input type="text" name="gater" ng-bind="gater" id="gater">
-                <p>&nbsp;</p>
-                <h2 ng-style="color" ng-bind-html="message"></h2>
-                <p>&nbsp;</p>
-                <button ng-click="login()">פתיחת עמדה</button>
-                <p>&nbsp;</p>
-                <button ng-click="logout()">סגירת עמדה</button>
-                <p>&nbsp;</p>
-            </form>
+        <hr>
+        <form>
+            <h3>קוד אירוע:</h3>
+            <input type="number" id="event_code" name="event_code"/>
+            <button ng-click="login()">כניסה</button>
+        </form>
 
-            <div ng-hide="adminOnly">
-                <div class="button-bar">
-                    <a class="button" ng-click="setServer(1)">srv 1</a>
-                    <a class="button" ng-click="setServer(2)">srv 2</a>
-                    <a class="button" ng-click="setServer(0)">dev roy</a>
-                    <a class="button" ng-click="setServer(-1)">cloud</a>
-                </div>
-            </div>
-
-            <p>&nbsp;</p>
-        </div>
-        <div ng-hide="!passPhase">
-            <h2>סיסמת אחראי משמרת:</h2>
-            <input type="number" name="pass" id="pass" ng-bind="pass" ng-focus="true" pattern="[0-9]*" autofocus class="hide_pass">
-            <p>&nbsp;</p>
-            <button ng-click="passClick()">המשך</button>
-            <p>&nbsp;</p>
-        </div>
-
-        <button ng-click="back()">חזרה לתפריט</button>
     </ion-content>
 </ion-view>
