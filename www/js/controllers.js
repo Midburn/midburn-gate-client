@@ -32,7 +32,7 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
         $scope.manualInput = function () {
             $ionicLoading.show();
-            $http.get(PreferencesService.getURL() + '/?action=manual_entrance&order=' + $('#order_num').val() + '&ticket=' + $('#ticket_num').val(), {timeout: 10000})
+            $http.get(PreferencesService.getURL() + '/?action=manual_entrance&order=' + $('#order_num').val() + '&ticket=' + $('#ticket_num').val() + '&name=' + $('#burner_name').val(), {timeout: 10000})
                 .success(function (data, status, headers, config) {
                     TicketService.set(data);
                     if (data.color == "red") {
