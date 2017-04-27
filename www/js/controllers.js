@@ -1,8 +1,13 @@
+var EVENT_CODE_DIGITS_NUMBER = 6;
+var store;
+var MIDBURN_GATE_APP = 'midburn gate';
+var EVENT_CODE = 'event_code';
 
 angular.module('starter.controllers', ['ionic', 'ngCordova'])
 
     .controller("MainController", function ($ionicPlatform, $interval, $scope, $cordovaBarcodeScanner, $http, TicketService, $state, PreferencesService, $ionicLoading) {
         $ionicLoading.hide();
+        store = new Persist.Store(MIDBURN_GATE_APP);
         $scope.scanBarcode = function () {
             $cordovaBarcodeScanner.scan().then(function (imageData) {
                 if (!imageData.cancelled) {
@@ -47,10 +52,6 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
                 .error(function (data, status, headers, config) {
                     $ionicLoading.hide();
                 });
-        };
-
-        $scope.login = function () {
-            $state.go('login', {}, {reload: true});
         };
 
         $scope.checkServer = function () {
@@ -113,63 +114,29 @@ angular.module('starter.controllers', ['ionic', 'ngCordova'])
     })
 
     .controller("LoginController", function ($scope, $state, $http, PreferencesService) {
-        $scope.gater = "";
-        $scope.message = "";
-        $scope.passPhase = true;
-        $scope.adminOnly = true;
+        var savedEventCode = store.get(EVENT_CODE);
+        console.log("checking for existing event code");
+        if (savedEventCode) {
+            console.log("event code already insterted");
+            console.log("savedEventCode: "+ savedEventCode);
+            $state.go("main");
+        }
 
         $scope.login = function () {
-            var gater = $('#gater').val();
-            if (gater == '')
-            {
-                alert("יש להכניס שם מפעיל עמדה");
+            console.log("login function called")
+            var eventCode = $('#event_code').val();
+            if (eventCode.length !== EVENT_CODE_DIGITS_NUMBER) {
+                alert("יש להזין 6 ספרות");
             }
             else {
-                $http.get(PreferencesService.getURL() + '/?action=login&gater=' + gater, {timeout: 10000})
+                $http.get(PreferencesService.getURL() + '/?action=login&eventCode=' + eventCode, {timeout: 10000})
                     .success(function (data, status, headers, config) {
-                        $scope.message = data.message;
-                        $scope.color = data.color;
+                        store.set(EVENT_CODE, eventCode);
+                        $state.go("main");
                     })
-            }
-        };
-
-        $scope.logout = function () {
-            $http.get(PreferencesService.getURL() + '/?action=logout', {timeout: 10000})
-                .success(function (data, status, headers, config) {
-                    $scope.message = data.message;
-                    $scope.color = data.color;
-                })
-        };
-
-        $scope.back = function () {
-            $state.go('main', {}, {reload: true});
-        };
-
-        $scope.setServer = function (server) {
-            if (server == 0) {
-                PreferencesService.setURL(devServerURL);
-            }
-            else if (server == -1) {
-                PreferencesService.setURL(cloudServerURL);
-            }
-            else {
-                PreferencesService.setURL('http://10.0.0.' + server + ':8080');
-            }
-        };
-
-        $scope.passClick = function () {
-            var $pass = $('#pass');
-            if ($pass.val() == 2015) {
-                $scope.passPhase = false;
-            }
-            else if ($pass.val() == 20052015) {
-                $scope.passPhase = false;
-                $scope.adminOnly = false;
-            }
-            else
-            {
-                $pass.val(null);
-                alert("סיסמה שגויה!");
+                    .error(function (data, status, headers, config) {
+                        alert("הזדהות נכשלה");
+                    });
             }
         };
     })
